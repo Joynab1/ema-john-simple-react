@@ -1,5 +1,4 @@
 import React from 'react';
-import './product.css'
 
 const Product = (props) => {
     const { name, category, seller, price, img, quantity, ratings } = (props.product)
