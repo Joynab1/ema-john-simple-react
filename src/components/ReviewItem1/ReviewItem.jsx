@@ -7,7 +7,7 @@ const ReviewItem = ({ product,handleRemoveFromCart}) => {
     return (
     <div className='border rounded-lg mb-5 p-7 flex gap-10'>
             <img className='h-[91px] w-[91px] border rounded-md' src={img} alt="" />
-        <div className='flex justify-between items-center'>
+        <div className='flex w-full justify-between items-center'>
             <div className='font-semibold'>
                 <p>{name}</p>
                 <p>Price: <span className='text-orange-300'>${price}</span></p>

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb, getShoppingCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleRight} from '@fortawesome/free-solid-svg-icons'
+
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -34,6 +38,11 @@ const Shop = () => {
         setCart(newCart)
         addToDb(product.id)
     }
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
+        console.log('hihihi')
+    }
     return (
         <div className=' min-w-[1440px] grid grid-cols-1 md:grid-cols-5  ml-10 my-5'>
             <div className='col-span-4 grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -46,7 +55,15 @@ const Shop = () => {
                 }
             </div>
             <div className='col-span-1 '>
-                <Cart cart={cart}></Cart>
+                
+                <Cart 
+                cart={cart}
+                handleClearCart={handleClearCart}
+                >
+                 <Link to='orders'>
+                    <button className='px-4 py-3 bg-purple-400 mt-3 w-full rounded-lg flex justify-between items-center'> <span>Review Order</span> <FontAwesomeIcon className='text-white' icon={faArrowAltCircleRight}/></button>
+                    </Link>   
+                </Cart>
             </div>
         </div>
     );
